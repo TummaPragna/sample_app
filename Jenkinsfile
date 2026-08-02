@@ -6,6 +6,7 @@ pipeline {
     }
 
     stages {
+
         stage('Clone') {
             steps {
                 echo 'Repository cloned'
@@ -14,7 +15,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat "docker build -t %IMAGE_NAME% ."
+                sh 'docker build -t $IMAGE_NAME .'
             }
         }
 
