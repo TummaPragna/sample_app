@@ -6,7 +6,6 @@ pipeline {
     }
 
     stages {
-
         stage('Clone') {
             steps {
                 echo 'Repository cloned'
@@ -15,13 +14,16 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $IMAGE_NAME .'
+                sh '''
+                whoami
+                docker build -t $IMAGE_NAME .
+                '''
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                echo 'Docker image will be pushed after Docker Hub credentials are configured.'
+                echo 'Docker image build completed'
             }
         }
     }
